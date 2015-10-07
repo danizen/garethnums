@@ -85,3 +85,36 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'public')
 urlprefix = os.environ.setdefault('MY_URL_ROOT', '')
 staticprefix = os.environ.setdefault('MY_STATIC_ROOT', '/{}static/'.format(urlprefix))
 STATIC_URL = staticprefix
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'full': {
+            'format': '[%(asctime)s] %(levelname)s %(name)s %(message)s',
+        },
+    },
+    'handlers': {
+        'file': {
+            'formatter': 'full',
+            'level': 'INFO',
+            'class': 'logging.handlers.TimedRotatingFileHandler',
+            'encoding': 'UTF-8',
+            'when': 'H',
+            'interval': 1,
+            'filename': os.path.join(logdir, 'garethnums.log'),
+        },
+        'console': {
+            'formatter': 'full',
+            'level': 'INFO',
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file'],
+            'level': 'INFO',
+            'propogate': True,
+        },
+    },
+}
