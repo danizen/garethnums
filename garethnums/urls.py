@@ -1,6 +1,8 @@
+import os
 from django.conf.urls import patterns, include, url
-from django.contrib import admin
+
+prefix = os.environ.setdefault('MY_URL_ROOT', '')
 
 urlpatterns = patterns('',
-    url(r'^/?$', 'garethnums.views.numbers'),
+    url(r'^{}$'.format(prefix), 'garethnums.views.numbers'),
 )

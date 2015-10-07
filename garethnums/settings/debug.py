@@ -10,7 +10,7 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
-BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
 
 
 # Quick-start development settings - unsuitable for production
@@ -81,4 +81,7 @@ STATICFILES_DIRS = ( os.path.join(BASE_DIR, 'static'), )
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'public')
 
-STATIC_URL = '/static/'
+
+urlprefix = os.environ.setdefault('MY_URL_ROOT', '')
+staticprefix = os.environ.setdefault('MY_STATIC_ROOT', '/{}static/'.format(urlprefix))
+STATIC_URL = staticprefix
