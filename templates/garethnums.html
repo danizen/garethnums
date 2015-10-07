@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block "body" %}
+<center>
+<h1>Gareth Numbers</h1>
+<p>Click on whichever number is least</p>
+<div class="choices">
+<span class="{{leftclasses}}">{{left}}</span>
+<span class="{{rightclasses}}">{{right}}</span>
+</div>
+<div class="result">
+<img class="greenchk hidden" width="100" src="{% static 'greenchk.svg' %}"/>
+<img class="redx hidden" width="100" src="{% static 'redx.svg' %}"/>
+</div>
+</center>
+{% endblock %}
