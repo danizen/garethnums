@@ -1,5 +1,6 @@
 from django.shortcuts import render
 import random 
+import builtins
 
 def numbers(request):
     left = random.randrange(100)
@@ -13,9 +14,4 @@ def numbers(request):
     else:
         leftclasses = 'left correct'
         rightclasses = 'right correct'
-    context = { 
-        'left': left, 
-        'leftclasses': leftclasses,
-        'rightclasses': rightclasses,
-        'right': right }
-    return render(request, 'garethnums.html', context)
+    return render(request, 'garethnums.html', locals())
