@@ -81,10 +81,13 @@ STATICFILES_DIRS = ( os.path.join(BASE_DIR, 'static'), )
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'public')
 
-
 urlprefix = os.environ.setdefault('MY_URL_ROOT', '')
 staticprefix = os.environ.setdefault('MY_STATIC_ROOT', '/{}static/'.format(urlprefix))
 STATIC_URL = staticprefix
+
+logdir = os.environ.setdefault('DJANGO_LOG_DIR', os.path.join(BASE_DIR, "logs"))
+if not os.path.exists(logdir):
+    os.mkdir(logdir)
 
 LOGGING = {
     'version': 1,
