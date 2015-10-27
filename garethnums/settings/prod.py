@@ -87,7 +87,7 @@ urlprefix = os.environ.setdefault('MY_URL_ROOT', '')
 staticprefix = os.environ.setdefault('MY_STATIC_ROOT', '/{}static/'.format(urlprefix))
 STATIC_URL = staticprefix
 
-logdir = os.environ['DJANGO_LOG_DIR'] if 'DJANGO_LOG_DIR' in os.environ else 'logs'
+logdir = os.environ.setdefault('DJANGO_LOG_DIR', os.path.join(BASE_DIR, "logs"))
 if not os.path.exists(logdir):
     os.mkdir(logdir)
 
