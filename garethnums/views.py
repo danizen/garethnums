@@ -1,6 +1,5 @@
 from django.shortcuts import render
 import random 
-import builtins
 
 def numbers(request):
     left = random.randrange(100)

@@ -2,3 +2,4 @@
 *.pyo
 public/
 db.sqlite3
+logs/
